@@ -26,7 +26,7 @@ https://github.com/user-attachments/assets/06e32817-8b4f-4d16-8d53-4d664359adb5
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/jobscout.git
+   git clone https://github.com/js-rock/jobscout.git
    cd jobs-ai-agent
    ```
 
