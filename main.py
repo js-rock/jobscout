@@ -4,10 +4,11 @@ import os
 from jobspy import scrape_jobs
 from prettytable import PrettyTable
 
+print("Welcome to JobScout! 🕵️‍♂️")
 # ------------------------------------------------------------------------------------------
 # User Inputs
 # ------------------------------------------------------------------------------------------
-keywords = input(f'Enter job keywords etc "senior dev": ').lower() or "Junior AI"
+keywords = input(f'Enter job keywords etc "python developer": ').lower() or "Junior AI"
 loc = input(f'Input city + country i.e. "Sydney, Australia": ').lower() or "Sydney, Australia"
 
 # ------------------------------------------------------------------------------------------
@@ -28,11 +29,11 @@ def run_job_search(search_term, location):
     # Try to scrape, but catch the error if it fails
     try:
         jobs = scrape_jobs(
-            site_name=["linkedin", "indeed"], #"seek", "jora",
+            site_name=['linkedin', 'indeed'], #"seek", "jora",
             search_term=search_term,
             location=location,
             results_wanted=20,
-            hours_old=72,
+            hours_old=168, #72,
             country_indeed=country
         )
         
@@ -62,17 +63,35 @@ def print_dashboard(df):
 
 if __name__ == "__main__":
 
-    # Run the search
+    # 1. Ingest the raw data matrix from your search query
     results = run_job_search(keywords, loc)
 
-    # Call the dashboard
+    # 2. PRESENTATION LAYER: Execute your clean, centered PrettyTable terminal display
     print_dashboard(results)
 
-    # This will show you exactly which site provided which job
+    # 3. METRIC SUMMARY: Output the quick site metrics count below the table
     if not results.empty and 'site' in results.columns:
         print(results['site'].value_counts())
     else:
-        print("\nNo site data available.")
+        print("\nNo source site data telemetry available.")
 
+    # 4. STORAGE LAYER: Silently save the raw data in the background
+    if not results.empty:
+        try:
+            target_order = ['title', 'company', 'location', 'job_url']
+            available_columns = [col for col in target_order if col in results.columns]
+            output_data = results.reindex(columns=available_columns)
+            output_data.columns = [col.upper() for col in output_data.columns]
+            
+            # The 'justify' parameter is native to Pandas and needs no extra libraries
+            output_data.to_html("australian_job_leads.html", 
+                                index=False, 
+                                render_links=True, 
+                                justify='center')
+            
+            print("\n[SUCCESS] Clean HTML report generated.")
+        except Exception as e:
+            print(f"\n[WARNING] HTML generation failed: {e}")
+            
     print("\nScan complete. Press Enter to close this window. .")
     input()

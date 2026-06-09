@@ -10,8 +10,7 @@ A local, private lightweight command-line tool for scanning job listings across 
 - **Clean Output**: Displays results in a formatted table using `prettytable`.
 - **Smart Location Handling**: Automatically detects country for Indeed's API requirements.
 - **Error Resilient**: Gracefully handles scraping failures without crashing.
-- **Zero Dependencies for Data**: Runs entirely on standard Python libraries and `jobspy`.
-
+- **Local & Private**: Processes all data locally on your machine with zero external data logging.
 ## 🛠️ Prerequisites
 
 - Python 3.8+
@@ -21,7 +20,7 @@ A local, private lightweight command-line tool for scanning job listings across 
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/YOUR_USERNAME/jobs-ai-agent.git
+   git clone https://github.com/YOUR_USERNAME/jobscout.git
    cd jobs-ai-agent
    ```
 
@@ -68,6 +67,20 @@ python main.py
 
 Scan complete. Press Enter to close this window.
 ```
+
+### 📊 Dashboard Generation
+Upon completion, the tool automatically generates a file named `australian_job_leads.html` in your root directory. This provides a persistent, searchable, and click-ready HTML dashboard of your local search results.
+
+## ⚠️ Platform Compatibility & Limitations ##
+
+This project aggregates data from LinkedIn and Indeed. Integrations for local Australian platforms (like SEEK/Jora) or Google Jobs were evaluated; however, these platforms enforce strict bot-protection and anti-scraping policies to protect their proprietary data. This project prioritizes stability and compliance by focusing on platforms that support ethical, open-source data aggregation.
+
+## 🔮 Future Roadmap ##
+- Automated Email Alerts: Integrating smtplib to email the HTML report automatically once a scan finishes.
+
+- Proxy Rotation: Implementing rotating residential proxies to improve success rates on high-security job boards.
+
+- AI Filtering: Using a small LLM (like Ollama or GPT-4o-mini) to "score" job descriptions against the user's CV to calculate a "match percentage."
 
 ## 🐛 Troubleshooting
 

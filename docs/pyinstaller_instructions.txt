@@ -1,1 +1,4 @@
 pyinstaller --onefile --name "Jobs Scanner" --add-binary "D:\__Python_Projects\jobs-ai-agent\venv\Lib\site-packages\tls_client\dependencies\tls-client-64.dll;tls_client/dependencies" main.py
+
+optional:
+python -m pyinstaller --onefile --name "Jobs Scanner" --add-binary ".\venv\Lib\site-packages\tls_client\dependencies\tls-client-64.dll;tls_client/dependencies" main.py

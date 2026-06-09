@@ -4,4 +4,4 @@ build/
 .env
 __pycache__/
 *pyc
-assets/
+australian_job_leads.html
