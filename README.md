@@ -2,7 +2,13 @@
 
 A local, private lightweight command-line tool for scanning job listings across **LinkedIn** and **Indeed**. It fetches recent job postings, filters them by location and keywords, and displays them in a clean, readable table format directly in your terminal. 
 
-🛠️ Why this matters: Built with Python to demonstrate robust web scraping, error handling, and data structuring—the foundational steps for any **future** AI-driven data pipeline.
+
+
+https://github.com/user-attachments/assets/06e32817-8b4f-4d16-8d53-4d664359adb5
+
+
+
+🛠️ Why this matters: Built to automate and streamline my own daily job search pipeline. Constructed with Python to demonstrate robust web scraping, error handling, and data structuring—the foundational steps for any future AI-driven data pipeline.
 
 ## 🚀 Features
 
