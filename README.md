@@ -51,10 +51,10 @@ https://github.com/user-attachments/assets/06e32817-8b4f-4d16-8d53-4d664359adb5
    > pip install jobspy prettytable pandas
    > ```
 
-### Option 2: Use the Standalone Executable (Windows/macOS)
-For convenience, the project includes a compiled binary created using **PyInstaller**. This ensures the tool runs without requiring users to install Python or dependencies.
+### Option 2: Use the Standalone Executable (Windows/macOS - coming soon)
+A pre-compiled binary created using **PyInstaller** is currently being prepared for distribution. This will allow users to run the tool without installing Python or dependencies. 
+> *Updates will be posted in the [Releases](https://github.com/js-rock/jobscout/releases) section.*
 ```
-
 ## 🏃 Usage
 
 Run the script:
@@ -83,11 +83,11 @@ Scan complete. Press Enter to close this window.
 ### 📊 Dashboard Generation
 Upon completion, the tool automatically generates a file named `australian_job_leads.html` in your root directory. This provides a persistent, searchable, and click-ready HTML dashboard of your local search results.
 
-## ⚠️ Platform Compatibility & Limitations ##
+## ⚠️ Platform Compatibility & Limitations 
 
 This project aggregates data from LinkedIn and Indeed. Integrations for local Australian platforms (like SEEK/Jora) or Google Jobs were evaluated; however, these platforms enforce strict bot-protection and anti-scraping policies to protect their proprietary data. This project prioritizes stability and compliance by focusing on platforms that support ethical, open-source data aggregation.
 
-## 🔮 Future Roadmap ##
+## 🔮 Future Roadmap 
 - Automated Email Alerts: Integrating smtplib to email the HTML report automatically once a scan finishes.
 
 - Proxy Rotation: Implementing rotating residential proxies to improve success rates on high-security job boards.
