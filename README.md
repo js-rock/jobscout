@@ -29,7 +29,7 @@ https://github.com/user-attachments/assets/06e32817-8b4f-4d16-8d53-4d664359adb5
 1. Clone the repository:
    ```bash
    git clone https://github.com/js-rock/jobscout.git
-   cd jobs-ai-agent
+   cd jobscout
    ```
 
 2. Create a virtual environment (recommended):
@@ -50,6 +50,10 @@ https://github.com/user-attachments/assets/06e32817-8b4f-4d16-8d53-4d664359adb5
    > ```bash
    > pip install jobspy prettytable pandas
    > ```
+
+### Option 2: Use the Standalone Executable (Windows/macOS)
+For convenience, the project includes a compiled binary created using **PyInstaller**. This ensures the tool runs without requiring users to install Python or dependencies.
+```
 
 ## 🏃 Usage
 
