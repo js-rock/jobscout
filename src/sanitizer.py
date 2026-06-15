@@ -29,18 +29,17 @@ class InputSanitizer:
         """Sanitize general text input"""
         if not text or not isinstance(text, str):
             return None
+        
+        # This regex now allows commas, so we don't need the dangerous_chars loop anymore.
+        if not re.match(r"^[a-zA-Z0-9\s\-',\.]+$", text):
+            return None
             
         text = text.strip()
-        
         if len(text) > max_length:
             return None
             
-        # Remove potentially dangerous characters
-        dangerous_chars = ['<', '>', '&', '"', "'", '`', ';', '|', '$', '(', ')']
-        for char in dangerous_chars:
-            text = text.replace(char, '')
-            
-        return text
+        return text.title()
+        
     
     @staticmethod
     def validate_day_request(user_text):

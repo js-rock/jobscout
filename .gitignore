@@ -5,3 +5,4 @@ build/
 __pycache__/
 *pyc
 australian_job_leads.html
+.DS_Store

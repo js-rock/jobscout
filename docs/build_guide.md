@@ -15,12 +15,11 @@ MVP
 [DONE] make this an app for distro to friends family etc
 
 Creep
-Creep
+
 - Upload resume for AI to analyse + patch potential to job scrape
 - **AI to parse, summarise, and rank according to user resume**
-- Jobspy can't scrape Seek + Jora, will need to create custom scripts or use other tools like BeautifulSoup or Scrapy. 
-- Save results to CSV/Excel
-- Filter by salary or job type
+- Jobspy can't scrape Seek + Jora, maybe will need to create custom scripts or use other tools like BeautifulSoup or Scrapy. 
+[DONE] Save results to ~~CSV/Excel~~ html for clickable links
 - Email notifications for new jobs
 - Web GUI (Flask/Streamlit) instead of terminal
 - Multiple searches in one run

@@ -3,13 +3,7 @@ import webbrowser
 import os
 from jobspy import scrape_jobs
 from prettytable import PrettyTable
-
-print("Welcome to JobScout! 🕵️‍♂️")
-# ------------------------------------------------------------------------------------------
-# User Inputs
-# ------------------------------------------------------------------------------------------
-keywords = input(f'Enter job keywords etc "python developer": ').lower() or "Junior AI"
-loc = input(f'Input city + country i.e. "Sydney, Australia": ').lower() or "Sydney, Australia"
+from src.sanitizer import InputSanitizer 
 
 # ------------------------------------------------------------------------------------------
 # MAIN
@@ -33,7 +27,7 @@ def run_job_search(search_term, location):
             search_term=search_term,
             location=location,
             results_wanted=20,
-            hours_old=168, #72,
+            hours_old=72, #168,
             country_indeed=country
         )
         
@@ -62,6 +56,54 @@ def print_dashboard(df):
         print("Dashboard empty: No data to display.")
 
 if __name__ == "__main__":
+    if os.name == 'nt':
+        import ctypes
+        ctypes.windll.kernel32.SetConsoleTitleW("JobScout")
+
+    print("Welcome to JobScout! 🕵️‍♂️")
+    # ------------------------------------------------------------------------------------------
+    # User Inputs
+    # ------------------------------------------------------------------------------------------
+    raw_keywords = input(f'Enter job keywords etc "python developer": ').lower() or "Junior AI"
+    raw_loc = input(f'Input city + country i.e. "Sydney, Australia" (otherwise default is any, USA): ').lower() or "Sydney, Australia"
+
+    # ------------------------------------------------------------------------------------------
+    # Sanitize the user inputs
+    # ------------------------------------------------------------------------------------------
+    keywords = InputSanitizer.sanitize_text_input(raw_keywords, max_length=100)
+    loc = InputSanitizer.sanitize_text_input(raw_loc, max_length=100) 
+
+    if keywords is not None and loc is not None:
+        print(f"✅ Inputs sanitized successfully.")
+        print(f"   Keywords: {keywords}")
+        print(f"   Location: {loc}")
+        
+        # Check if keywords are too short or meaningless
+        if len(keywords.strip()) < 3:
+            print("❌ Keywords too short. Please enter at least 3 characters.")
+            exit()
+        if len(loc.strip()) < 3:
+            print("❌ Location too short. Please enter a full city name (e.g., Sydney, Australia).")
+            exit()
+        # Warn if location looks like random typing
+        # Real locations usually have spaces or commas. 
+        # Pure random letters are likely typos.
+        if ' ' not in loc and ',' not in loc and len(loc) > 5:
+            print(f"⚠️  Warning: Your location '{loc}' looks unusual (no spaces or commas).")
+            print(f"   JobSpy may default to USA results.")       
+
+        # Proceed with job search
+        run_job_search(keywords, loc)
+    else:
+        print("❌ Invalid input detected. Please check your keywords and location format.")
+        print("   Allowed characters: letters, numbers, spaces, hyphens, apostrophes, periods.")
+        # Optionally exit or re-prompt here
+        exit()
+
+    if not keywords or not loc:
+        print("Error: Invalid input. Please try again.")
+        # Optionally exit or re-prompt here
+        exit()
 
     # 1. Ingest the raw data matrix from your search query
     results = run_job_search(keywords, loc)

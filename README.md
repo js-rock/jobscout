@@ -10,6 +10,8 @@ https://github.com/user-attachments/assets/06e32817-8b4f-4d16-8d53-4d664359adb5
 
 🛠️ Why this matters: Built to automate and streamline my own daily job search pipeline. Constructed with Python to demonstrate robust web scraping, error handling, and data structuring—the foundational steps for any future AI-driven data pipeline.
 
+**PLEASE NOTE:** JobScout is capped to 3 days / 72 hours to keep listings fresh.
+
 ## 🚀 Features
 
 - **Multi-Source Scraping**: Simultaneously searches LinkedIn and Indeed.
@@ -90,13 +92,17 @@ This project aggregates data from LinkedIn and Indeed. Integrations for local Au
 
 ## 🐛 Troubleshooting
 
-- **"Scraper error: Invalid country string"**: Ensure you enter the country in English (e.g., "Australia", "United States"). The tool automatically formats this for the API.
+- **"Scraper error:** Invalid location": The tool is currently optimized for the Australian job market. Please ensure you are entering valid Australian location strings (e.g., "Sydney", "Melbourne"). The application handles the country-specific API formatting automatically.
 - **No Results**: Some job sites block automated requests. If you receive no data, wait a few minutes and try again.
 
-## 📜 License
+## 🙏 Acknowledgements
 
-This project is for educational and personal use only. By using this tool, you agree to comply with the Terms of Service of LinkedIn, Indeed, and other third-party sites.
+This project is inspired by JobSpy. Many thanks to the contributors for their excellent work on the core scraping logic.
 
 ## 📬 Support
 
 For issues or feature requests, please open an issue on GitHub.
+
+## 📜 License
+
+This project is for educational and personal use only. By using this tool, you agree to comply with the Terms of Service of LinkedIn, Indeed, and other third-party sites.
