@@ -1,3 +1,40 @@
 graph TD
-input_job_title --> 
-B --> C
+    %% Define Styles
+    classDef mvp fill:#e1f5fe,stroke:#01579b,stroke-width:2px;
+    classDef future fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef active fill:#e8f5e9,stroke:#2e7d32,stroke-width:4px;
+
+    Start([Start JobSearch]) --> Input[User Input:<br/>Keywords & Location]
+    Input --> Validate{Input Valid?}
+    
+    %% MVP Branch
+    Validate -- No --> Retry[Show Error & Retry]
+    Retry --> Input
+    
+    Validate -- Yes --> Scrape[Scrape Engine<br/>JobSpy]
+    Scrape --> LinkedIn[LinkedIn]
+    Scrape --> Indeed[Indeed]
+    
+    LinkedIn --> Process[Data Processing]
+    Indeed --> Process
+    
+    Process --> OutputCLI{User Choice}
+    
+    subgraph MVP [Phase 1: MVP - Local CLI]
+        OutputCLI -- Terminal --> Table[PrettyTable Output]
+        OutputCLI -- File --> HTML[HTML Dashboard<br/>Clickable Links]
+    end
+    
+    class MVP,Table,HTML active;
+
+    %% Future Branch
+    OutputCLI -- Future --> F_Resume[Upload Resume]
+    F_Resume --> F_AI[AI Analysis<br/>Ranking & Summarization]
+    
+    subgraph Creep [Phase 2: Expansion - Cloud/AI]
+        F_AI --> F_Email[Email Alerts]
+        F_AI --> F_Site2[Add Seek/Jora<br/>Custom Scrapers]
+        F_AI --> F_GUI[Streamlit Web GUI]
+    end
+    
+    class Creep,F_Resume,F_AI,F_Email,F_Site2,F_GUI future;

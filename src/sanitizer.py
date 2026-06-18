@@ -57,6 +57,55 @@ class InputSanitizer:
                      'thursday', 'friday', 'saturday', 'sunday']
         
         return sanitized.lower() if sanitized.lower() in valid_days else None
+    
+    @staticmethod
+    def validate_location_format(location: str) -> dict:
+        """
+        Ensures location has a City AND a Country.
+        Returns: {'valid': bool, 'error': str or None, 'city': str, 'country': str}
+        """
+        if not location:
+            return {'valid': False, 'error': "Location cannot be empty.", 'city': '', 'country': ''}
+
+        # Split by comma to check structure
+        parts = [p.strip() for p in location.split(',')]
+        
+        # Check if user provided BOTH parts (e.g., "Sydney, Australia")
+        if len(parts) < 2:
+            return {
+                'valid': False, 
+                'error': "Location must include City and Country (e.g., 'Sydney, Australia').", 
+                'city': '', 
+                'country': ''
+            }
+        
+        city = parts[0]
+        country = parts[-1] # Take the last part as country
+
+        # Check for Gibberish in City (Must have at least 2 letters)
+        if len([c for c in city if c.isalpha()]) < 2:
+            return {
+                'valid': False, 
+                'error': f"City '{city}' looks invalid. Please enter a real city name.", 
+                'city': '', 
+                'country': ''
+            }
+
+        # Check for Gibberish in Country (Must have at least 2 letters)
+        if len([c for c in country if c.isalpha()]) < 2:
+            return {
+                'valid': False, 
+                'error': f"Country '{country}' looks invalid. Please enter a real country.", 
+                'city': '', 
+                'country': ''
+            }
+
+        return {
+            'valid': True, 
+            'error': None, 
+            'city': city, 
+            'country': country
+        }
 
 # Simple functions for easy use
 def sanitize_city(city_input):
@@ -67,3 +116,6 @@ def validate_text(text_input):
 
 def validate_day(day_input):
     return InputSanitizer.validate_day_request(day_input)
+
+def validate_location_format(location_input):
+    return InputSanitizer.validate_location_format(location_input)

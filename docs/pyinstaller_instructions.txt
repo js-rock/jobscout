@@ -5,4 +5,4 @@ python -m pyinstaller --onefile --name "JobScout" --add-binary ".\venv\Lib\site-
 
 in cmd (inside the root directory):
 venv\scripts\activate
-pyinstaller "jobsscanner.spec"
+pyinstaller "jobscanner.spec"
