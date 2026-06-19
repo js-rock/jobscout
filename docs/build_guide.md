@@ -12,6 +12,14 @@ MVP
 
 [DONE] make this an app for distro to friends family etc
 
+[DONE] Make streamlit links clickable
+
+[Done] Make indeed and linkedin graphs name horizontal
+
+- Upload the .exe version
+
+- Update the video with streamlink version
+
 Creep
 
 - Upload resume for AI to analyse + patch potential to job scrape
