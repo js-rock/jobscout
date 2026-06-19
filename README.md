@@ -4,6 +4,12 @@ A local, private lightweight command-line tool **and Streamlit Web Application**
 
 
 
+
+https://github.com/user-attachments/assets/a3bac527-c202-421e-a7da-207afc096eaf
+
+
+
+
 ### 🚀 Live Demo: [Click here to run JobScout in your browser](https://jobscout-jsrock.streamlit.app)
 
 ### 🛠️ Why this matters: 
